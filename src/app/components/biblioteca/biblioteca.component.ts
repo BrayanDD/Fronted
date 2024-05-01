@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder,Validators} from "@angular/forms";
+// import {FormBuilder,Validators} from "@angular/forms";
 import {TechnologyService} from "../../services/technology/technology.service";
 import {TechnologyRequest} from "../../services/technology/technologyRequest";
 
@@ -14,8 +14,9 @@ export class BibliotecaComponent implements OnInit {
 
   formularioVisible: boolean = false;
   ventanaFormVisible: boolean = false;
-  hideFormOnButtonClick(buttonId: string) {
-    if (buttonId === 'botonCrear') {
+
+  hideFormOnButtonClick(button: string) {
+    if (button === 'button') {
       this.ventanaFormVisible = true;
       this.formularioVisible = true;
     }
@@ -28,27 +29,29 @@ export class BibliotecaComponent implements OnInit {
     this.ventanaExitosoFormVisible = false;
   }
 
-  bibliotecaForm= this.formBuilder.group({
-    name:['',[Validators.required]],
-    description:['',[Validators.required]]
-  })
+  // bibliotecaForm= this.formBuilder.group({
+  //   name:['',[Validators.required]],
+  //   description:['',[Validators.required]]
+  // })
 
-  constructor(private formBuilder:FormBuilder,private technologyService : TechnologyService) { }
+  constructor(private technologyService : TechnologyService) { }
+
+  // constructor(private formBuilder:FormBuilder,private technologyService : TechnologyService) { }
 
   ngOnInit(): void {
   }
 
-  get name(){
-    return this.bibliotecaForm.controls.name;
-  }
+  // get name(){
+  //   return this.bibliotecaForm.controls.name;
+  // }
+  //
+  // get description(){
+  //   return this.bibliotecaForm.controls.description;
+  // }
 
-  get description(){
-    return this.bibliotecaForm.controls.description;
-  }
-
-  create(): void{
-    if (this.bibliotecaForm.valid){
-      this.technologyService.createTechnology(this.bibliotecaForm.value as TechnologyRequest).subscribe({
+  create(formData: TechnologyRequest): void{
+      console.log('Datos del formulario:', formData);
+      this.technologyService.createTechnology(formData as TechnologyRequest).subscribe({
         next: () =>{
           console.log("creando")
         },
@@ -58,16 +61,13 @@ export class BibliotecaComponent implements OnInit {
         },
         complete: ()=>{
           console.info("complete")
-          this.bibliotecaForm.reset();
           this.formularioVisible = false;
           this.ventanaFormVisible = false;
           this.ventanaExitosoFormVisible = true;
         }
       });
 
-    }else{
-      this.bibliotecaForm.markAllAsTouched();
-    }
+
   }
 
 }

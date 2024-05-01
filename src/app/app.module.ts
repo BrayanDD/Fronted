@@ -12,10 +12,16 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {JwtInterceptorService} from "./services/jwt/jwt-interceptor.service";
 import {ErrorInterceptorService} from "./services/jwt/error-interceptor.service";
-import { GeneralPageComponent } from './components/pages/general/general-page/general-page.component';
-import { ButtonsComponent } from './components/atoms/buttons/buttonCreate/buttons.component';
+import { GeneralPageComponent } from './components/pages/general-page/general-page.component';
+import { ButtonsComponent } from './components/atoms/buttons/button/buttons.component';
 import { CreatedEmergenteComponent } from './components/atoms/emergente/created-emergente/created-emergente.component';
 import { ButtonCloseComponent } from './components/atoms/buttons/button-close/button-close.component';
+import {TexareaComponent} from "./components/atoms/texarea/texarea.component";
+import {InputComponent} from "./components/atoms/input/input.component";
+import {FormComponent} from "./components/molecules/form/form.component";
+import { NavBibliotecaComponent } from './components/biblioteca/nav-biblioteca/nav-biblioteca.component';
+
+
 
 
 @NgModule({
@@ -29,6 +35,11 @@ import { ButtonCloseComponent } from './components/atoms/buttons/button-close/bu
     ButtonsComponent,
     CreatedEmergenteComponent,
     ButtonCloseComponent,
+    FormComponent,
+    InputComponent,
+    TexareaComponent,
+    NavBibliotecaComponent,
+
 
   ],
   imports: [

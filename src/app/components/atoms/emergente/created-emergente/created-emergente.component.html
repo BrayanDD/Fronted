@@ -1,5 +1,6 @@
-<div class="ventana" >
-
-  <p><ng-content></ng-content></p>
-  <app-button-close (buttonClicked)="hideVentanaOnButtonClick($event)"></app-button-close>
+<div class="fondo-difuminado">
+  <div class="contenedor">
+    <p><ng-content></ng-content></p>
+    <app-buttons id="botonCerrar" textBut="X" (buttonClicked)="hideVentanaOnButtonClick($event)"></app-buttons>
+  </div>
 </div>

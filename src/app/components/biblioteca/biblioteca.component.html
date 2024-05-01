@@ -1,29 +1,33 @@
 
 <app-general-page>
+  <app-nav-biblioteca></app-nav-biblioteca>
   <app-created-emergente  (closed)="hideFormOnVentanaClose()" *ngIf="ventanaFormVisible">
-  <form class="formulario-crear" [formGroup]="bibliotecaForm" *ngIf="formularioVisible">
-    <p class="text-danger">{{technologyError}}</p>
-    <label for="name">Nombre:</label>
-    <input type="text" id="name" name="name" formControlName="name">
-    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
-      <div *ngIf="name.errors?.['required']">
-        Name is required.</div>
-
-    </div>
-    <label for="description">Descripción:</label>
-    <textarea id="description" name="description" formControlName="description"></textarea>
-    <div *ngIf="description.invalid && (description.dirty || description.touched)" class="text-danger">
-      <div *ngIf="description.errors?.['required']">
-        Description is required.</div>
-
-    </div>
-    <button type="submit" (click)="create()">Crear</button>
-  </form>
+    <app-form (formTechValid)="create($event)" [capacitiesForm]="false"></app-form>
+<!--    <form class="formulario-crear" [formGroup]="bibliotecaForm" *ngIf="formularioVisible">-->
+<!--      <p class="text-danger">{{technologyError}}</p>-->
+<!--      <label for="name">Nombre:</label>-->
+<!--      <input type="text" id="name" name="name" formControlName="name">-->
+<!--      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">-->
+<!--        <div *ngIf="name.errors?.['required']">-->
+<!--          Name is required.</div>-->
+<!--  -->
+<!--      </div>-->
+<!--      <label for="description">Descripción:</label>-->
+<!--      <textarea id="description" name="description" formControlName="description"></textarea>-->
+<!--      <div *ngIf="description.invalid && (description.dirty || description.touched)" class="text-danger">-->
+<!--        <div *ngIf="description.errors?.['required']">-->
+<!--          Description is required.</div>-->
+<!--  -->
+<!--      </div>-->
+<!--      <app-buttons textBut="Crear" type="submit" (click)="create()"></app-buttons>-->
+<!--  -->
+<!--    </form>-->
   </app-created-emergente>
-  <app-buttons (buttonClicked)="hideFormOnButtonClick($event)"></app-buttons>
+  <app-buttons textBut="+ Crear" id="button-created" (buttonClicked)="hideFormOnButtonClick($event)"></app-buttons>
   <app-created-emergente  (closed)="hideFormOnVentanaClose()" *ngIf="ventanaExitosoFormVisible">
     <p >Creado exitosamente</p>
     <p>Tecnologia creada</p>
   </app-created-emergente>
 </app-general-page>
+
 

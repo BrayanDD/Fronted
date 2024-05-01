@@ -1,0 +1,10 @@
+@import "~src/styles/variables";
+button{
+  width: 6em;
+  height: 2em;
+  border-radius: 1em;
+  color: $withe;
+  font-size: 1rem;
+  background-color: $primary-color-black;
+  border: none;
+}

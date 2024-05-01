@@ -16,8 +16,8 @@ export class CreatedEmergenteComponent implements OnInit {
   @Output() closed: EventEmitter<void> = new EventEmitter<void>();
 
 
-  hideVentanaOnButtonClick(buttonId: string) {
-    if (buttonId === 'botonCerrar') {
+  hideVentanaOnButtonClick(button: string) {
+    if (button === 'button') {
 
       this.closed.emit();
     }

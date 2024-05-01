@@ -1,35 +1,34 @@
-nav{
+@import "~src/styles/variables";
+.nav-biblioteca{
+  display: flex;
   width: 100%;
-  height: 100%;
-  background-color:  #fdf1e9;
+  height: 2em;
 }
 .active  {
 
   display: flex;
   justify-content: center;
-  background-color: #f4c5a4;
+  border-bottom: $primary-color-black  solid;
+  border-width: 1em;
+
+  mso-border-shadow: yes;
   color: #e7833d;
   text-decoration: none;
 }
 .conteiner-link{
 
   padding-top: 14px;
-  height: 30px;
-  width: 100%;
+  height: 2.5em;
+  width: 8em;
+  max-width: 14em;
+  border-bottom: $primary-color 0.1em solid;
 }
-.container-link li a{
-
+.container-link  a{
 
   display: flex;
   align-items: center;
 ;
 }
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
 a {
   height: 100%;
 

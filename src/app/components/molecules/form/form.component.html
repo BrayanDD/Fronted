@@ -1,0 +1,30 @@
+<form class="formulario-crear" [formGroup]="bibliotecaForm">
+<!--  <app-input labelInput='Nombre' typeInput="text" controlName="name"></app-input>-->
+
+  <label for="name">Nombre:</label>
+  <input type="text" id="name"  formControlName="name">
+  <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="text-danger">
+    <div *ngIf="name?.errors?.['required']">Name is required.</div>
+    <div *ngIf="name?.errors?.['minLength']">Name must be at least 5 characters long.</div>
+    <div *ngIf="name?.errors?.['maxLength']">Name cannot exceed 50 characters.</div>
+
+  </div>
+  <label for="description">Descripción:</label>
+  <textarea id="description" name="description" formControlName="description"></textarea>
+  <div *ngIf="description?.invalid && (description?.dirty || description?.touched)" class="text-danger">
+    <div *ngIf="description?.errors?.['required']">description is required.</div>
+    <div *ngIf="description?.errors?.['minLength']">description must be at least 5 characters long.</div>
+    <div *ngIf="description?.errors?.['maxLength']">description cannot exceed 50 characters.</div>
+
+  </div>
+
+  <label for="capacidades" *ngIf="_capacitiesForm">Nombre:</label>
+  <input type="text" id="capacidades" name="capacidades" formControlName="capacidades" *ngIf="_capacitiesForm">
+  <div *ngIf="capacidades?.invalid && (capacidades?.dirty || capacidades?.touched)" class="text-danger">
+    <div *ngIf="capacidades?.errors?.['required']">
+      capacidades is required.</div>
+
+  </div>
+  <app-buttons textBut="Crear" type="submit" (click)="create()"></app-buttons>
+
+</form>
