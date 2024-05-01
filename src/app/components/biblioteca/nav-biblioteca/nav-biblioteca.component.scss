@@ -1,0 +1,40 @@
+@import "~src/styles/variables";
+.nav-biblioteca{
+  display: flex;
+  width: 100%;
+  height: 2em;
+}
+.active  {
+
+  display: flex;
+  justify-content: center;
+  border-bottom: $primary-color-black  solid;
+  border-width: 1em;
+
+  mso-border-shadow: yes;
+  color: #e7833d;
+  text-decoration: none;
+}
+.conteiner-link{
+
+  padding-top: 14px;
+  height: 2.5em;
+  width: 8em;
+  max-width: 14em;
+  border-bottom: $primary-color 0.1em solid;
+}
+.container-link  a{
+
+  display: flex;
+  align-items: center;
+;
+}
+a {
+  height: 100%;
+
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,19 @@
+@import "~src/styles/variables";
+.input {
+  height: 5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.label {
+  display: block;
+  color: $primary-color;
+}
+
+.input-field {
+  border-radius: 1rem;
+  border: 1px solid $primary-color-black;
+  background-color: $secondary-color;
+  padding: 0.5rem;
+  width: 70%;
+}
