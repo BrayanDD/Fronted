@@ -18,10 +18,10 @@ import { GeneralPageComponent } from './components/pages/general-page/general-pa
 import { ButtonsComponent } from './components/atoms/buttons/button/buttons.component';
 import { CreatedEmergenteComponent } from './components/atoms/emergente/created-emergente/created-emergente.component';
 import { ButtonCloseComponent } from './components/atoms/buttons/button-close/button-close.component';
-import {TexareaComponent} from "./components/atoms/texarea/texarea.component";
 import {InputComponent} from "./components/atoms/input/input.component";
 import {FormComponent} from "./components/molecules/form/form.component";
 import { NavBibliotecaComponent } from './components/biblioteca/nav-biblioteca/nav-biblioteca.component';
+import { TexAreaComponent } from './components/atoms/tex-area/tex-area.component';
 
 
 
@@ -39,8 +39,9 @@ import { NavBibliotecaComponent } from './components/biblioteca/nav-biblioteca/n
     ButtonCloseComponent,
     FormComponent,
     InputComponent,
-    TexareaComponent,
+
     NavBibliotecaComponent,
+    TexAreaComponent,
 
 
   ],

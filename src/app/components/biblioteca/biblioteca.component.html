@@ -1,8 +1,8 @@
 
 <app-general-page>
   <app-nav-biblioteca></app-nav-biblioteca>
-  <app-created-emergente  (closed)="hideFormOnVentanaClose()" *ngIf="ventanaFormVisible">
-    <app-form (formTechValid)="create($event)" [capacitiesForm]="false"></app-form>
+  <app-created-emergente titleEmergente="Crear Tecnolgía" (closed)="hideFormOnVentanaClose()" *ngIf="ventanaFormVisible">
+    <app-form  [form]="''" ></app-form>
   </app-created-emergente>
   <app-buttons textBut="+ Crear" id="button-created" (buttonClicked)="hideFormOnButtonClick($event)"></app-buttons>
   <app-created-emergente  (closed)="hideFormOnVentanaClose()" *ngIf="ventanaExitosoFormVisible">

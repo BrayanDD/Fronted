@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TexareaComponent } from './texarea.component';
+import { TexAreaComponent } from './tex-area.component';
 
-describe('TexareaComponent', () => {
-  let component: TexareaComponent;
-  let fixture: ComponentFixture<TexareaComponent>;
+describe('TexAreaComponent', () => {
+  let component: TexAreaComponent;
+  let fixture: ComponentFixture<TexAreaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TexareaComponent ]
+      declarations: [ TexAreaComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TexareaComponent);
+    fixture = TestBed.createComponent(TexAreaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

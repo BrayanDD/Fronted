@@ -1,28 +1,23 @@
 <form *ngIf="bibliotecaForm"  class="formulario-crear" [formGroup]="bibliotecaForm">
  <app-input  labelInput='Nombre' typeInput="text" [control]="bibliotecaForm.controls['name']" ></app-input>
-
-  <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="text-danger">
-    <div *ngIf="name?.errors?.['required']">Name is required.</div>
-    <div *ngIf="name?.errors?.['minLength']">Name must be at least 5 characters long.</div>
-    <div *ngIf="name?.errors?.['maxLength']">Name cannot exceed 50 characters.</div>
-
-  </div>
-  <label for="description">Descripción:</label>
-  <textarea id="description" name="description" formControlName="description"></textarea>
-  <div *ngIf="description?.invalid && (description?.dirty || description?.touched)" class="text-danger">
-    <div *ngIf="description?.errors?.['required']">description is required.</div>
-    <div *ngIf="description?.errors?.['minLength']">description must be at least 5 characters long.</div>
-    <div *ngIf="description?.errors?.['maxLength']">description cannot exceed 50 characters.</div>
+  <div *ngIf="bibliotecaForm.get('name')?.touched" >
+    <div *ngIf="bibliotecaForm.get('name')?.errors?.['required']" class="error text-danger"class="error text-danger">Name is required.</div>
+    <div *ngIf="bibliotecaForm.get('name')?.errors?.['minLength']" class="error text-danger">Name must be at least 5 characters long.</div>
+    <div *ngIf="bibliotecaForm.get('name')?.errors?.['maxLength']" class="error text-danger">Name cannot exceed 50 characters.</div>
 
   </div>
 
+  <app-tex-area labelText='Descripción'  [control]="bibliotecaForm.controls['description']"></app-tex-area>
 
-  <label for="capacidades" *ngIf="_capacitiesForm">capa:</label>
-  <input type="text" id="capacidades" name="capacidades" formControlName="capacities" *ngIf="_capacitiesForm">
-  <div *ngIf="capacities?.invalid && (capacities?.dirty || capacities?.touched)" class="text-danger">
-    <div *ngIf="capacities?.errors?.['required']">capacities is required.</div>
-    <div *ngIf="capacities?.errors?.['minLength']">capacities must be at least 5 characters long.</div>
-    <div *ngIf="capacities?.errors?.['maxLength']">capacities cannot exceed 50 characters.</div>
+    <div *ngIf="bibliotecaForm.get('description')?.touched && bibliotecaForm.get('description')?.errors?.['required']" class="error text-danger">description is required.</div>
+    <div *ngIf="bibliotecaForm.get('description')?.touched && bibliotecaForm.get('description')?.errors?.['minLength']" class="error text-danger">description must be at least 5 characters long.</div>
+    <div *ngIf="bibliotecaForm.get('description')?.touched && bibliotecaForm.get('description')?.errors?.['maxLength']" class="error text-danger">description cannot exceed 50 characters.</div>
+
+  <app-input *ngIf="form === '1'" labelInput='Capacidades' typeInput="text" [control]="bibliotecaForm.controls['capacities']" ></app-input>
+  <div *ngIf="bibliotecaForm.get('capacities')?.touched" >
+    <div *ngIf="bibliotecaForm.get('capacities')?.errors?.['required']" class="error text-danger">capacities is required.</div>
+    <div *ngIf="bibliotecaForm.get('capacities')?.errors?.['minLength']" class="error text-danger">capacities must be at least 5 characters long.</div>
+    <div *ngIf="bibliotecaForm.get('capacities')?.errors?.['maxLength']" class="error text-danger">capacities cannot exceed 50 characters.</div>
 
   </div>
   <app-buttons textBut="Crear" type="submit" (click)="create()"></app-buttons>

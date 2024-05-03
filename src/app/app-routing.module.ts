@@ -4,8 +4,8 @@ import {BibliotecaComponent} from "./components/biblioteca/biblioteca.component"
 import {InicioComponent} from "./components/inicio/inicio.component";
 import {GeneralPageComponent} from "./components/pages/general-page/general-page.component";
 import {InputComponent} from "./components/atoms/input/input.component";
-import {TexareaComponent} from "./components/atoms/texarea/texarea.component";
 import {FormComponent} from "./components/molecules/form/form.component";
+import { TexAreaComponent } from './components/atoms/tex-area/tex-area.component';
 
 
 const routes: Routes = [
@@ -14,7 +14,7 @@ const routes: Routes = [
   {path:'biblioteca',component:BibliotecaComponent},
   {path: 'general', component:GeneralPageComponent},
   {path: 'input', component:InputComponent},
-  {path: 'texarea', component:TexareaComponent},
+  {path: 'texarea', component:TexAreaComponent},
   {path: 'form', component:FormComponent}
 ];
 
