@@ -1,102 +1,107 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, Validators, FormGroup, AbstractControl } from "@angular/forms";
+import { FormBuilder, Validators, FormGroup, AbstractControl, FormControl } from "@angular/forms";
 import { TechnologyRequest } from "../../../services/technology/technologyRequest";
-import * as customValidators from "./validators";
+import { DataFormService } from 'src/app/services/formData.service';
+
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
-  technologyForm: boolean = true;
-  _capacitiesForm: boolean = false;
-  _bootcampFrom: boolean = false;
-
-  constructor(private formBuilder: FormBuilder) { }
-
-  ngOnInit(): void {}
+  @Input() form: string = "";
 
 
-  @Input()
-  set capacitiesForm(value: boolean) {
-    this._capacitiesForm = value;
-    if (value) {
-      this._bootcampFrom = false;
-      this.addCapacitiesValidators();
+  constructor(private formBuilder: FormBuilder, private dataFormService: DataFormService) {}
+
+  ngOnInit(): void {
+    if (this.form === "1") {
+      this.bibliotecaForm.controls.capacities.setValidators([Validators.required, Validators.minLength(5), Validators.maxLength(50)]);
+      this.bibliotecaForm.controls.capacities.updateValueAndValidity();
     }
   }
-
-  get capacitiesForm(): boolean {
-    return this._capacitiesForm;
-  }
-
-  @Input()
-  set bootcampFrom(value: boolean) {
-    this._bootcampFrom = value;
-    if (value) {
-      this._capacitiesForm = false;
-
-    }
-  }
-
-  get bootcampFrom(): boolean {
-    return this._bootcampFrom;
-  }
-
 
   bibliotecaForm = this.formBuilder.group({
-    name: ['', [Validators.required, customValidators.minLengthValidator(5), customValidators.maxLengthValidator(50)]],
-    description: ['', [Validators.required, customValidators.minLengthValidator(5), customValidators.maxLengthValidator(50)]],
-    capacidades:['']
+    name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+    description: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+    capacities:['']
   });
 
-  addCapacitiesValidators(){
-    const capacidadesControl = this.bibliotecaForm.get('capacidades');
-    if (capacidadesControl) {
-      capacidadesControl.setValidators(Validators.required);
-      capacidadesControl.updateValueAndValidity();
-    }
-  }
-
-
-
-
-
-
-
-  get name() {
-    return this.bibliotecaForm.get('name');
-  }
-
-  get capacidades() {
-    return this.bibliotecaForm.get('capacidades');
-  }
-
-  @Output() formTechValid: EventEmitter<TechnologyRequest> = new EventEmitter<TechnologyRequest>();
-
-  get description() {
-    return this.bibliotecaForm.get('description');
-  }
-
   create(): void {
+
     if (this.bibliotecaForm.valid) {
-      const nameValue = this.bibliotecaForm.value.name;
-      const descriptionValue = this.bibliotecaForm.value.description;
-      const capacitiesValue = this.bibliotecaForm.value.capacidades;
-      console.log('name:', nameValue);
-      console.log('descrip:', descriptionValue);
-      if (nameValue !== null && descriptionValue !== null && this.technologyForm) {
+      const formValue = this.bibliotecaForm.value;
+      if (formValue.name !== null && formValue.description !== null ) {
         const formData: TechnologyRequest = {
-          name: nameValue,
-          description: descriptionValue
+          name: formValue.name ,
+          description: formValue.description
         };
-        console.log('Datos del formulario:', formData);
-        this.formTechValid.emit(formData);
-      } else if(this.capacitiesForm){
-        console.log('capacidades: ',capacitiesValue)
+        console.log('tech', formData);
+        this.dataFormService.technologyForm(formData);
+      } else if (this.form === "1") {
+        console.log('capacidades: ', formValue.capacities)
       } else {
         this.bibliotecaForm.markAllAsTouched();
       }
-    }
+
   }
+}
+
+ // technologyForm: boolean = true;
+  // _capacitiesForm: boolean = false;
+  // _bootcampFrom: boolean = false;
+  // @Input()
+  // set capacitiesForm(value: boolean) {
+  //   this._capacitiesForm = value;
+  //   if (value) {
+  //     this._bootcampFrom = false;
+  //     this.technologyForm = false;
+  //   }
+  // }
+
+  // @Input()
+  // set bootcampFrom(value: boolean) {
+  //   this._bootcampFrom = value;
+  //   if (value) {
+  //     this._capacitiesForm = false;
+  //     this.technologyForm = false;
+  //   }
+  // }
+  //utilzar iconos svg
+  //arquitectura lift
+  //logica separada correcion a logica generica, hace un input que reciba el for,
+  //legibilidad correcion,@Input() variableName: string = ''; de este hacer la condicional dependiendo el caso
+
+
+
+
+  // private initForm(): void {
+  //   if (this._capacitiesForm) {
+  //     this.bibliotecaForm.controls.capacities.setValidators([Validators.required, Validators.minLength(5), Validators.maxLength(50)]);
+  //     this.bibliotecaForm.controls.capacities.updateValueAndValidity();
+  //   }
+  // }
+
+  //form y creacion de componentes angular
+  //corregir el uso de metodos
+
+  //crear generenicos en las validaciones
+  // private addCapacitiesValidators(): void {
+  //   this.capacities.setValidators([Validators.required, customValidators.minLengthValidator(5), customValidators.maxLengthValidator(50)]);
+  //   this.capacities.updateValueAndValidity();
+  // }
+
+
+   //servicios para seter los datos mandador por el emit
+
+
+  //    this.formName.get('controlName');
+  // this.formName.get('controlName')?.hasError('errorName');
+  // this.formName.get('controlName')?.errors;
+
+  //el tema de modulos para atomos y moculas y estos llamarlos en el modulo padre
+
+
+
+
 }

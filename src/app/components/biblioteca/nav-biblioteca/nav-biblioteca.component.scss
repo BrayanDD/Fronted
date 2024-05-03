@@ -4,24 +4,38 @@
   width: 100%;
   height: 2em;
 }
-.active  {
-
+.active {
   display: flex;
   justify-content: center;
-  border-bottom: $primary-color-black  solid;
-  border-width: 1em;
-
-  mso-border-shadow: yes;
+  font-weight: bold;
   color: #e7833d;
   text-decoration: none;
+
+
+  position: relative;
 }
+
+.active .indicator {
+  position: absolute;
+  bottom: -0.1em;
+  left: 0;
+  width: 100%;
+  height: 0.2em;
+  background-color: $primary-color-black;
+  border-radius: 0.3em;
+  box-shadow: 0px -5px 1rem #e7833d;
+}
+
 .conteiner-link{
 
-  padding-top: 14px;
+  padding-top: 1em;
   height: 2.5em;
   width: 8em;
   max-width: 14em;
   border-bottom: $primary-color 0.1em solid;
+  &:hover{
+    background-color: $secondary-color;
+  }
 }
 .container-link  a{
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 // import {FormBuilder,Validators} from "@angular/forms";
 import {TechnologyService} from "../../services/technology/technology.service";
 import {TechnologyRequest} from "../../services/technology/technologyRequest";
+import { DataFormService } from 'src/app/services/formData.service';
 
 @Component({
   selector: 'app-biblioteca',
@@ -29,25 +30,18 @@ export class BibliotecaComponent implements OnInit {
     this.ventanaExitosoFormVisible = false;
   }
 
-  // bibliotecaForm= this.formBuilder.group({
-  //   name:['',[Validators.required]],
-  //   description:['',[Validators.required]]
-  // })
+  constructor(private technologyService : TechnologyService, private dataFormService: DataFormService) { }
 
-  constructor(private technologyService : TechnologyService) { }
 
-  // constructor(private formBuilder:FormBuilder,private technologyService : TechnologyService) { }
 
   ngOnInit(): void {
+    this.dataFormService.formDataTechnology$.subscribe(formData =>{
+      if(formData){
+        this.create(formData);
+      }
+    })
   }
 
-  // get name(){
-  //   return this.bibliotecaForm.controls.name;
-  // }
-  //
-  // get description(){
-  //   return this.bibliotecaForm.controls.description;
-  // }
 
   create(formData: TechnologyRequest): void{
       console.log('Datos del formulario:', formData);

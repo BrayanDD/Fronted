@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-created-emergente',
@@ -13,7 +13,9 @@ export class CreatedEmergenteComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  @Input() titleEmergente: string = "";
   @Output() closed: EventEmitter<void> = new EventEmitter<void>();
+
 
 
   hideVentanaOnButtonClick(button: string) {
