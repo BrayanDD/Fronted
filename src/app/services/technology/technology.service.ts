@@ -18,13 +18,20 @@ export class TechnologyService {
     )
   }
 
+  getAllTechnology(order: string): Observable<Technology[]> {
+    return this.http.get<Technology[]>(`${environment.urlApi}technologies?order=${order}`).pipe(
+      catchError(this.handlerError)
+    );
+  }
+
+
   private handlerError(error:HttpErrorResponse){
     if (error.status===0){
       console.error('Se ha producido un error', error.error);
     }else{
       console.error('El Backen retorno el codigo de estado',error.status,error.error);
     }
-    return throwError(()=> new Error('Algo fallo intente nuevamente'));
+    return throwError(()=> new Error(error.error.message));
   }
 
 

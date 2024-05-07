@@ -3,7 +3,7 @@
 .tex-area{
   height: 4.4rem;
   margin-top: 0.7em;
-  margin-bottom: 0.7em;
+  margin-bottom: 0.9em;
 }
 
 .label {
@@ -12,12 +12,13 @@
 }
 
 .tex-field{
+  margin-bottom: 1em;
   border-radius: 1rem;
   border: 1px solid $primary-color-black;
   background-color: $secondary-color;
   padding: 0.7rem;
   height: 1.5rem;
-  width: 70%;
+  width: 80%;
   &:focus {
 
     outline: none;

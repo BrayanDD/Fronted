@@ -1,5 +1,45 @@
+@import "~src/styles/variables";
+
 #button-created{
   position: absolute;
-  bottom: 2rem;
-  right: 3rem;
+  bottom: 2.5rem;
+  right: 6rem;
+}
+.controls{
+
+  padding-left: 35%;
+}
+.container-data{
+  margin-top: 1em;
+  max-height: 67%;
+  overflow-y: scroll;
+}
+
+.content h2 {
+  margin-bottom: -0.8em;
+}
+.content p{
+  max-width: 90%;
+  text-overflow: ellipsis;
+
+  margin-bottom: 0.3em;
+}
+
+.content{
+  height: 80%;
+  width: 90%;
+  left: 5%;
+  border-bottom: 0.1em $primary-color solid;
+  position: relative;
+}
+
+p{
+  text-align: center;
+}
+.created-succes{
+  align-items: center;
+}
+.created-succes img {
+  width: 2em;
+  height: 2em;
 }

@@ -13,6 +13,7 @@ export class CreatedEmergenteComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  @Input() class: string = "";
   @Input() titleEmergente: string = "";
   @Output() closed: EventEmitter<void> = new EventEmitter<void>();
 

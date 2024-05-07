@@ -22,6 +22,11 @@ import {InputComponent} from "./components/atoms/input/input.component";
 import {FormComponent} from "./components/molecules/form/form.component";
 import { NavBibliotecaComponent } from './components/biblioteca/nav-biblioteca/nav-biblioteca.component';
 import { TexAreaComponent } from './components/atoms/tex-area/tex-area.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { SliderComponent } from './components/molecules/slider/slider.component';
+import { PaginationsControlsComponent } from './components/atoms/paginations-controls/paginations-controls.component';
+import { AlertComponent } from './components/atoms/alert/alert.component';
+
 
 
 
@@ -42,6 +47,9 @@ import { TexAreaComponent } from './components/atoms/tex-area/tex-area.component
 
     NavBibliotecaComponent,
     TexAreaComponent,
+    SliderComponent,
+    PaginationsControlsComponent,
+    AlertComponent,
 
 
   ],
@@ -50,7 +58,8 @@ import { TexAreaComponent } from './components/atoms/tex-area/tex-area.component
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS,useClass:JwtInterceptorService,multi:true},

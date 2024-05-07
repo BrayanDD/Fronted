@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, AbstractControl, FormControl } from "@angular/forms";
 import { TechnologyRequest } from "../../../services/technology/technologyRequest";
 import { DataFormService } from 'src/app/services/formData.service';
+import * as customValidators from "./validators";
 
 @Component({
   selector: 'app-form',
@@ -16,16 +17,28 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.form === "1") {
-      this.bibliotecaForm.controls.capacities.setValidators([Validators.required, Validators.minLength(5), Validators.maxLength(50)]);
+      this.bibliotecaForm.controls.capacities.setValidators([Validators.required, customValidators.minLengthValidator(5), customValidators.maxLengthValidator(50)]);
       this.bibliotecaForm.controls.capacities.updateValueAndValidity();
     }
   }
 
   bibliotecaForm = this.formBuilder.group({
-    name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
-    description: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+    name: ['', [Validators.required, customValidators.minLengthValidator(5), customValidators.maxLengthValidator(50)]],
+    description: ['', [Validators.required, customValidators.minLengthValidator(5), customValidators.maxLengthValidator(50)]],
     capacities:['']
   });
+
+  get name(){
+    return this.bibliotecaForm.get('name');
+  }
+
+  get description(){
+    return this.bibliotecaForm.get('description');
+  }
+
+  get capacitites(){
+    return this.bibliotecaForm.get('capacities');
+  }
 
   create(): void {
 

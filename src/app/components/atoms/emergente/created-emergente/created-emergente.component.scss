@@ -24,6 +24,9 @@ h3{
   float: left;
 
 }
+.succes{
+  background-color: green;
+}
 .contenedor {
   position: fixed;
   top: 50%;
@@ -31,7 +34,7 @@ h3{
   transform: translate(-50%, -50%);
   max-width: 80%;
   max-height: 50%;
-  width: 50%;
+  width: 40%;
   background-color: white;;
   height: auto;
   padding: 1rem;
