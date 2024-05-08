@@ -6,6 +6,7 @@ import {GeneralPageComponent} from "./components/pages/general-page/general-page
 import {InputComponent} from "./components/atoms/input/input.component";
 import {FormComponent} from "./components/molecules/form/form.component";
 import { TexAreaComponent } from './components/atoms/tex-area/tex-area.component';
+import { SelectAddComponent } from './components/molecules/select-add/select-add.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'general', component:GeneralPageComponent},
   {path: 'input', component:InputComponent},
   {path: 'texarea', component:TexAreaComponent},
-  {path: 'form', component:FormComponent}
+  {path: 'form', component:FormComponent},
+  {path: 'select', component:SelectAddComponent}
 ];
 
 @NgModule({

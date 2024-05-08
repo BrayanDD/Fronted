@@ -26,6 +26,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { SliderComponent } from './components/molecules/slider/slider.component';
 import { PaginationsControlsComponent } from './components/atoms/paginations-controls/paginations-controls.component';
 import { AlertComponent } from './components/atoms/alert/alert.component';
+import { SelectAddComponent } from './components/molecules/select-add/select-add.component';
 
 
 
@@ -50,6 +51,7 @@ import { AlertComponent } from './components/atoms/alert/alert.component';
     SliderComponent,
     PaginationsControlsComponent,
     AlertComponent,
+    SelectAddComponent,
 
 
   ],
