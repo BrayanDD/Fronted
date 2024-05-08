@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormBuilder } from '@angular/forms';
 import { BibliotecaComponent } from './biblioteca.component';
 
 describe('BibliotecaComponent', () => {
@@ -8,7 +8,8 @@ describe('BibliotecaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BibliotecaComponent ]
+      declarations: [ BibliotecaComponent ],
+      providers: [ FormBuilder ]
     })
     .compileComponents();
 

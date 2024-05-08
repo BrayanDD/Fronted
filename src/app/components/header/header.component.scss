@@ -14,9 +14,19 @@ header{
   height: 100%;
   background-color: #fdf1e9;
 }
+.logo iframe{
+  width: 80%;
+  height: 90%;
+  padding: auto;
+}
 .usuario{
   width: 80%;
   height: 100%;
   background-color: #eea877;
   border-bottom-right-radius: 3cap;
+}
+.usuario iframe{
+  height: 2rem;
+  width: 2rem;
+  float: right;
 }

@@ -1,0 +1,8 @@
+<div class="items-per-page">
+  <select [(ngModel)]="itemsPage" (change)="onItemsPerPageChange()">
+    <option value="10">10 por pagina</option>
+    <option value="25">25 por pagina</option>
+    <option value="50">50 por pagina</option>
+  </select>
+  <app-buttons id="button" textBut="Ordenar por: " (click)="changeOrder()"></app-buttons>
+</div>

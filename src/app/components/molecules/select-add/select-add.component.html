@@ -1,0 +1,13 @@
+<div class="items" *ngFor="let item of itemsSelect;let indice = index;">
+  <p>{{ item?.name }}</p>
+  <button (click)="onClickDelete(indice)">Borrar</button>
+</div>
+
+<select name="selectItem" [(ngModel)]="selectedItem" id="selectItem">
+  <option value="" disabled selected hidden>Selecciona un item</option>
+  <option *ngFor="let item of filteredItems" [ngValue]="item">{{ item.name }}</option>
+</select>
+
+
+<button (click)="onClick()">Añadir al servicio</button>
+<button (click)="idList()">lista id</button>

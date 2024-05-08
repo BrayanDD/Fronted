@@ -1,0 +1,26 @@
+@import "~src/styles/variables";
+
+.items-per-page {
+  display: block;
+  height: 1.6em;
+  padding-left: 75%;
+  margin-top: 0.3em;
+}
+
+select {
+  background-color: transparent;
+  border: none;
+  color: $primary-color-black;
+  margin-right: 2em;
+  outline: none;
+}
+
+
+.ng-valid:not(form).ng-touched {
+  border-left: none;
+}
+
+.ng-invalid:not(form).ng-touched {
+  border-left: none;
+}
+
