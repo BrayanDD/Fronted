@@ -12,6 +12,10 @@ export class AlertComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.class = '';
+      this.message = '';
+    }, 5000);
   }
 
 }

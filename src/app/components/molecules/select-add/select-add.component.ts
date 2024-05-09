@@ -10,18 +10,18 @@ import { ListAddService } from 'src/app/services/list-add.service'; // Importa e
 })
 export class SelectAddComponent implements OnInit {
 
-  items: any[] = [];
+  @Input() items: any[] = [];
   itemsSelect: any[] = [];
-  selectedItem: any; // Propiedad para rastrear el elemento seleccionado
+  selectedItem: any;
   currentOrder: string = 'asc';
-  filteredItems: any[] = [];
-  constructor(private listAddService: ListAddService,private technologyService: TechnologyService) { } // Inyecta el servicio ListAddService
+
+  constructor(private listAddService: ListAddService,private technologyService: TechnologyService) { }
 
   ngOnInit(): void {
     this.technologyService.getAllTechnology(this.currentOrder).subscribe(
       (technologies: Technology[]) => {
         this.items = technologies;
-        this.filteredItems = technologies;
+
       },
       (error) => {
         console.error('Error al obtener las tecnologías:', error);
@@ -32,21 +32,10 @@ export class SelectAddComponent implements OnInit {
     })
   }
 
-  filterItems(value: string) {
-    if (!value) {
-      // Si no hay valor de búsqueda, mostramos todos los items
-      this.filteredItems = this.items;
-      return;
-    }
 
-    // Filtramos los items basados en el valor de búsqueda
-    this.filteredItems = this.items.filter(item =>
-      item.name.toLowerCase().includes(value.toLowerCase())
-    );
-  }
   onClick() {
-    if (this.selectedItem) { // Asegúrate de que haya un elemento seleccionado
-      this.listAddService.addNewItem(this.selectedItem); // Añade el elemento seleccionado al servicio ListAddService
+    if (this.selectedItem) {
+      this.listAddService.addNewItem(this.selectedItem);
     }
   }
   onClickDelete(indice:number){

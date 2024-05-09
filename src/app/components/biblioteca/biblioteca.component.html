@@ -9,7 +9,7 @@
   </div>
   <app-alert *ngIf="technologyError" class="error" message="{{technologyError}}"></app-alert>
   <app-created-emergente titleEmergente="Crear Tecnolgía" (closed)="hideFormOnVentanaClose()" *ngIf="ventanaFormVisible">
-    <app-form [form]="''"></app-form>
+    <app-form [form]="'1'"></app-form>
   </app-created-emergente>
   <app-buttons textBut="+ Crear" id="button-created" (buttonClicked)="hideFormOnButtonClick($event)"></app-buttons>
   <div class="controls">
