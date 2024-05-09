@@ -3,6 +3,8 @@ import { FormBuilder, Validators, FormGroup, AbstractControl, FormControl } from
 import { TechnologyRequest } from "../../../services/technology/technologyRequest";
 import { DataFormService } from 'src/app/services/formData.service';
 import * as customValidators from "./validators";
+import { CapacityRequest } from 'src/app/services/capacity/capacityRequest';
+import { ListAddService } from 'src/app/services/list-add.service';
 
 @Component({
   selector: 'app-form',
@@ -11,9 +13,9 @@ import * as customValidators from "./validators";
 })
 export class FormComponent implements OnInit {
   @Input() form: string = "";
+  @Input() items: any[] = [];
 
-
-  constructor(private formBuilder: FormBuilder, private dataFormService: DataFormService) {}
+  constructor(private formBuilder: FormBuilder, private dataFormService: DataFormService, private listAddService: ListAddService) {}
 
   ngOnInit(): void {
     if (this.form === "1") {
@@ -44,15 +46,21 @@ export class FormComponent implements OnInit {
 
     if (this.bibliotecaForm.valid) {
       const formValue = this.bibliotecaForm.value;
-      if (formValue.name !== null && formValue.description !== null ) {
+      if (formValue.name !== null && formValue.description !== null && this.form === "1" ) {
         const formData: TechnologyRequest = {
           name: formValue.name ,
           description: formValue.description
         };
         console.log('tech', formData);
-        this.dataFormService.technologyForm(formData);
-      } else if (this.form === "1") {
-        console.log('capacidades: ', formValue.capacities)
+        this.dataFormService.dataForm(formData);
+      } else if (formValue.name !== null && formValue.description !== null && this.form === "2") {
+        console.log('capacidades: ')
+        const formData: CapacityRequest={
+          name: formValue.name,
+          description: formValue.description,
+          technologyIds: this.listAddService.idItemsAdd()
+        };
+        this.dataFormService.dataForm(formData);
       } else {
         this.bibliotecaForm.markAllAsTouched();
       }

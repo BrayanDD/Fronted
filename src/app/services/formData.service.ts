@@ -7,15 +7,18 @@ import { TechnologyRequest } from './technology/technologyRequest';
   providedIn: 'root'
 })
 export class DataFormService {
-  private formDataTechnologySubject = new BehaviorSubject<TechnologyRequest | null>(null);
+  private formDataSubject = new BehaviorSubject<any>(null);
 
   constructor() {}
 
-  get formDataTechnology$() {
-    return this.formDataTechnologySubject.asObservable();
+  get formData$() {
+    return this.formDataSubject.asObservable();
   }
 
-  technologyForm(formData: TechnologyRequest) {
-    this.formDataTechnologySubject.next(formData);
+  dataForm(formData: any) {
+    this.formDataSubject.next(formData);
+  }
+  clearForm(){
+    this.formDataSubject.next(null);
   }
 }

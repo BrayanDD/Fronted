@@ -1,17 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { TechnologyService } from "../../services/technology/technology.service";
-import { TechnologyRequest } from "../../services/technology/technologyRequest";
+import { Capacity } from 'src/app/services/capacity/capacity';
+import { CapacityService } from 'src/app/services/capacity/capacity.service';
+import { CapacityRequest } from 'src/app/services/capacity/capacityRequest';
 import { DataFormService } from 'src/app/services/formData.service';
+import { ListAddService } from 'src/app/services/list-add.service';
 import { Technology } from 'src/app/services/technology/technology';
+import { TechnologyService } from 'src/app/services/technology/technology.service';
 
 @Component({
-  selector: 'app-biblioteca',
-  templateUrl: './biblioteca.component.html',
-  styleUrls: ['./biblioteca.component.scss']
+  selector: 'app-capacity',
+  templateUrl: './capacity.component.html',
+  styleUrls: ['./capacity.component.scss']
 })
-export class BibliotecaComponent implements OnInit {
+export class CapacityComponent implements OnInit {
 
-  technologyError: string = "";
+
+  capacityError: string = "";
   formularioVisible: boolean = false;
   ventanaFormVisible: boolean = false;
   ventanaExitosoFormVisible: boolean = false;
@@ -20,24 +24,10 @@ export class BibliotecaComponent implements OnInit {
 
   itemsPage: number = 10;
   currentOrder: string = 'asc';
-  constructor(private technologyService: TechnologyService, private dataFormService: DataFormService) { }
+
+  constructor(private technologyService: TechnologyService, private dataFormService: DataFormService, private capacityService: CapacityService,private lisAddService: ListAddService) { }
 
   ngOnInit(): void {
-    this.loadTechnologies(this.currentOrder);
-    this.dataFormService.formData$.subscribe(formData =>{
-      if(formData){
-
-        this.create(formData);
-      }
-    })
-  }
-
-  onItemsPerPageChange(event: number): void {
-    this.itemsPage = event;
-  }
-
-  loadTechnologies(order: string) {
-    this.currentOrder = order;
     this.technologyService.getAllTechnology(this.currentOrder).subscribe(
       (technologies: Technology[]) => {
         this.technologies = technologies;
@@ -47,7 +37,18 @@ export class BibliotecaComponent implements OnInit {
         console.error('Error al obtener las tecnologías:', error);
       }
     );
+    this.dataFormService.formData$.subscribe(formData =>{
+      if(formData){
+        this.create(formData);
+      }
+    })
   }
+
+  onItemsPerPageChange(event: number): void {
+    this.itemsPage = event;
+  }
+
+
 
 
   hideFormOnButtonClick(button: string): void {
@@ -66,25 +67,25 @@ export class BibliotecaComponent implements OnInit {
     this.p = event;
   }
 
-  create(formData: TechnologyRequest): void {
+  create(formData: CapacityRequest): void {
     console.log('Datos del formulario:', formData);
-    this.technologyService.createTechnology(formData as TechnologyRequest).subscribe({
+    this.capacityService.createCapacity(formData as CapacityRequest).subscribe({
       next: () => {
         console.log("creando")
       },
       error: (errorData) => {
         console.log(errorData)
-        this.technologyError = errorData;
+        this.capacityError = errorData;
       },
       complete: () => {
         console.info("complete")
         this.formularioVisible = false;
         this.ventanaFormVisible = false;
         this.ventanaExitosoFormVisible = true;
-        this.loadTechnologies(this.currentOrder);
         this.dataFormService.clearForm;
       }
     });
   }
+
 
 }

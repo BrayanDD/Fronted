@@ -1,13 +1,14 @@
-<div class="items" *ngFor="let item of itemsSelect;let indice = index;">
-  <p>{{ item?.name }}</p>
-  <button (click)="onClickDelete(indice)">Borrar</button>
+<div class="continer-items" *ngIf="itemsSelect.length > 0">
+  <div class="items" *ngFor="let item of itemsSelect;let indice = index;">
+    <p>{{ item?.name }}</p>
+    <button (click)="onClickDelete(indice)">X</button>
+  </div>
 </div>
-
 <select name="selectItem" [(ngModel)]="selectedItem" id="selectItem">
   <option value="" disabled selected hidden>Selecciona un item</option>
-  <option *ngFor="let item of filteredItems" [ngValue]="item">{{ item.name }}</option>
+  <option *ngFor="let item of items" [ngValue]="item">{{ item.name }}</option>
 </select>
 
+<app-buttons textBut="+" (click)="onClick()"></app-buttons>
 
-<button (click)="onClick()">Añadir al servicio</button>
-<button (click)="idList()">lista id</button>
+

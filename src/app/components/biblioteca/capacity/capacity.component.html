@@ -1,0 +1,15 @@
+
+<app-general-page>
+  <app-nav-biblioteca></app-nav-biblioteca>
+
+  <app-alert *ngIf="capacityError" class="error" message="{{capacityError}}"></app-alert>
+  <app-created-emergente titleEmergente="Crear Capacidad" (closed)="hideFormOnVentanaClose()" *ngIf="ventanaFormVisible">
+    <app-form [form]="'2'" [items]="technologies"></app-form>
+  </app-created-emergente>
+  <app-buttons textBut="+ Crear" id="button-created" (buttonClicked)="hideFormOnButtonClick($event)"></app-buttons>
+
+  <app-created-emergente id="created-succes" (closed)="hideFormOnVentanaClose()" class="succes" *ngIf="ventanaExitosoFormVisible">
+    <img src="../utils/check-mark-2180770_1280.svg" alt="">
+    <p>Tecnologia creada</p>
+  </app-created-emergente>
+</app-general-page>
