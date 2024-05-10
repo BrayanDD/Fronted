@@ -14,7 +14,7 @@ import { TechnologyService } from 'src/app/services/technology/technology.servic
 })
 export class CapacityComponent implements OnInit {
 
-
+  capcities: Capacity[] = [];
   capacityError: string = "";
   formularioVisible: boolean = false;
   ventanaFormVisible: boolean = false;
@@ -28,6 +28,7 @@ export class CapacityComponent implements OnInit {
   constructor(private technologyService: TechnologyService, private dataFormService: DataFormService, private capacityService: CapacityService,private lisAddService: ListAddService) { }
 
   ngOnInit(): void {
+    this.loadCapacities(this.currentOrder);
     this.technologyService.getAllTechnology(this.currentOrder).subscribe(
       (technologies: Technology[]) => {
         this.technologies = technologies;
@@ -49,7 +50,18 @@ export class CapacityComponent implements OnInit {
   }
 
 
+  loadCapacities(order: string) {
+    this.currentOrder = order;
+    this.capacityService.getAllCapacity(this.currentOrder).subscribe(
+      (capcities: Capacity[]) => {
+        this.capcities = capcities;
 
+      },
+      (error) => {
+        console.error('Error al obtener las tecnologías:', error);
+      }
+    );
+  }
 
   hideFormOnButtonClick(button: string): void {
     if (button === 'button') {
@@ -82,6 +94,7 @@ export class CapacityComponent implements OnInit {
         this.formularioVisible = false;
         this.ventanaFormVisible = false;
         this.ventanaExitosoFormVisible = true;
+        this.loadCapacities(this.currentOrder);
         this.dataFormService.clearForm;
       }
     });

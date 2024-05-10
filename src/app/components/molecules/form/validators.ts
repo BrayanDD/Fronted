@@ -17,3 +17,16 @@ export function maxLengthValidator(maxLength: number): ValidatorFn {
     return null;
   };
 }
+
+export function capacitiesValidator(idItems: number[]): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    if (!idItems || idItems.length === 0) {
+      return { 'required': true };
+    } else if (idItems.length < 3) {
+      return { 'minLength': true };
+    } else if (idItems.length > 20) {
+      return { 'maxLength': true };
+    }
+    return null;
+  };
+}

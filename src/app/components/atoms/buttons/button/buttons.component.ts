@@ -7,6 +7,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class ButtonsComponent implements OnInit {
 
+  @Input() textBut: string = '';
+  @Input() disabled: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
@@ -17,6 +19,5 @@ export class ButtonsComponent implements OnInit {
     this.buttonClicked.emit(button);
   }
 
-  @Input() textBut: string = '';
 
 }

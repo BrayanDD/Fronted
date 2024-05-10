@@ -10,9 +10,20 @@ button{
   cursor: pointer;
   transition: background-color 0.2s, color 0.2s;
 
-  &:hover {
-    background-color: transparent;
-    color: $primary-color;
-    border: 0.1em $primary-color solid;
+  &.button {
+    color: $withe;
+    background-color: $primary-color-black;
+
+    &:hover {
+      background-color: transparent;
+      color: $primary-color;
+      border: 0.1em $primary-color solid;
+    }
+  }
+
+  &.disabled {
+    color: gray;
+    background-color: lightgray;
+    cursor: not-allowed;
   }
 }

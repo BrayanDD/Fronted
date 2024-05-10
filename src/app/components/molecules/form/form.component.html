@@ -14,14 +14,13 @@
     <div *ngIf="description?.errors?.['maxLength']">description cannot exceed 50 characters.</div>
 
   </div>
-  <!-- <app-input *ngIf="form === '1'" labelInput='Capacidades' typeInput="text" [control]="bibliotecaForm.controls['capacities']" ></app-input>
+  <app-select-add *ngIf="form === '2'" [control]="bibliotecaForm.controls['capacities']" [items]="items"></app-select-add>
   <div *ngIf="capacitites?.invalid && (capacitites?.dirty || capacitites?.touched)" class="text-danger">
     <div *ngIf="capacitites?.errors?.['required']">capacitites is required.</div>
-    <div *ngIf="capacitites?.errors?.['minLength']">capacitites must be at least 5 characters long.</div>
-    <div *ngIf="capacitites?.errors?.['maxLength']">capacitites cannot exceed 50 characters.</div>
+    <div *ngIf="capacitites?.errors?.['minLength']">capacitites must be at least 3 technologies long.</div>
+    <div *ngIf="capacitites?.errors?.['maxLength']">capacitites cannot exceed 20 technologies.</div>
 
-  </div> -->
-  <app-select-add *ngIf="form === '2'" [items]="items"></app-select-add>
-  <app-buttons id="boton-crear" textBut="Crear" type="submit" (click)="create()"></app-buttons>
+  </div>
+  <app-buttons id="boton-crear" textBut="Crear" type="submit" [disabled]="!bibliotecaForm.valid || (bibliotecaForm.pristine && !bibliotecaForm.touched)" (click)="create()"></app-buttons>
 
 </form>

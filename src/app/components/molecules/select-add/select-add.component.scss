@@ -29,9 +29,10 @@
 }
 select{
   width: 80%;
-  height: 2em;
+  height: 2.7em;
   border: 0.1em $primary-color-black solid;
   border-radius: 0.7em;
+  margin-bottom: 0.6em;
   text-decoration: none;
   &:focus {
 
@@ -48,10 +49,3 @@ select{
   width: 100%;
 }
 
-.ng-valid:not(form).ng-touched {
-  border-left: none;
-}
-
-.ng-invalid:not(form).ng-touched {
-  border-left: none;
-}
