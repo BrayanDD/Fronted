@@ -4,8 +4,7 @@
     <button (click)="onClickDelete(indice)">X</button>
   </div>
 </div>
-<select name="selectItem" [(ngModel)]="selectedItem" id="selectItem">
-  <option value="" disabled selected hidden>Selecciona un item</option>
+<select name="selectItem"  [formControl]="control" *ngIf="control" [(ngModel)]="selectedItem" id="selectItem">
   <option *ngFor="let item of items" [ngValue]="item">{{ item.name }}</option>
 </select>
 

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Technology } from 'src/app/services/technology/technology';
 import { TechnologyService } from 'src/app/services/technology/technology.service';
 import { ListAddService } from 'src/app/services/list-add.service'; // Importa el servicio ListAddService
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-select-add',
@@ -9,7 +10,7 @@ import { ListAddService } from 'src/app/services/list-add.service'; // Importa e
   styleUrls: ['./select-add.component.scss']
 })
 export class SelectAddComponent implements OnInit {
-
+  @Input() control?: FormControl;
   @Input() items: any[] = [];
   itemsSelect: any[] = [];
   selectedItem: any;
