@@ -16,7 +16,7 @@ export class BibliotecaComponent implements OnInit {
   ventanaFormVisible: boolean = false;
   ventanaExitosoFormVisible: boolean = false;
   technologies: Technology[] = [];
-  p: number = 1;
+  page: number = 1;
 
   itemsPage: number = 10;
   currentOrder: string = 'asc';
@@ -63,7 +63,7 @@ export class BibliotecaComponent implements OnInit {
   }
 
   pageChanged(event: any): void {
-    this.p = event;
+    this.page = event;
   }
 
   create(formData: TechnologyRequest): void {

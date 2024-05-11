@@ -8,6 +8,7 @@ import {FormComponent} from "./components/molecules/form/form.component";
 import { TexAreaComponent } from './components/atoms/tex-area/tex-area.component';
 import { SelectAddComponent } from './components/molecules/select-add/select-add.component';
 import { CapacityComponent } from './components/biblioteca/capacity/capacity.component';
+import { BootcampComponent } from './components/biblioteca/bootcamp/bootcamp.component';
 
 
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path: 'texarea', component:TexAreaComponent},
   {path: 'form', component:FormComponent},
   {path: 'select', component:SelectAddComponent},
-  {path: 'biblioteca/capacity', component:CapacityComponent}
+  {path: 'biblioteca/capacity', component:CapacityComponent},
+  {path: 'biblioteca/bootcamp', component:BootcampComponent}
 ];
 
 @NgModule({

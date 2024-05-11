@@ -6,6 +6,7 @@ import * as customValidators from "./validators";
 import { CapacityRequest } from 'src/app/services/capacity/capacityRequest';
 import { ListAddService } from 'src/app/services/list-add.service';
 import { capacitiesValidator } from './validators';
+import { BootcampRequest } from 'src/app/services/bootcamp/bootcampRequest';
 
 @Component({
   selector: 'app-form',
@@ -19,20 +20,27 @@ export class FormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private dataFormService: DataFormService, private listAddService: ListAddService) {}
 
   ngOnInit(): void {
-    if (this.form === "1") {
+    if (this.form === "2") {
       this.listAddService.item.subscribe(items => {
-        this.idItems = this.listAddService.idItemsAdd(); // Actualiza los idItems cuando hay cambios
+        this.idItems = this.listAddService.idItemsAdd();
         this.bibliotecaForm.controls.capacities.setValidators([Validators.required, capacitiesValidator(this.idItems)]);
         this.bibliotecaForm.controls.capacities.updateValueAndValidity();
       });
     }
-
+    if (this.form === "3") {
+          this.listAddService.item.subscribe(items => {
+            this.idItems = this.listAddService.idItemsAdd();
+            this.bibliotecaForm.controls.bootcamps.setValidators([Validators.required, capacitiesValidator(this.idItems)]);
+            this.bibliotecaForm.controls.bootcamps.updateValueAndValidity();
+          });
+        }
   }
 
   bibliotecaForm = this.formBuilder.group({
     name: ['', [Validators.required, customValidators.minLengthValidator(5), customValidators.maxLengthValidator(50)]],
     description: ['', [Validators.required, customValidators.minLengthValidator(5), customValidators.maxLengthValidator(50)]],
-    capacities:[[]]
+    capacities:[[]],
+    bootcamps:[[]]
   });
 
   get name(){
@@ -43,35 +51,40 @@ export class FormComponent implements OnInit {
     return this.bibliotecaForm.get('description');
   }
 
-  get capacitites(){
+  get capacities(){
     return this.bibliotecaForm.get('capacities');
   }
 
-  create(): void {
-
-    if (this.bibliotecaForm.valid) {
-      const formValue = this.bibliotecaForm.value;
-      if (formValue.name !== null && formValue.description !== null && this.form === "1" ) {
-        const formData: TechnologyRequest = {
-          name: formValue.name ,
-          description: formValue.description
-        };
-        console.log('tech', formData);
-        this.dataFormService.dataForm(formData);
-      } else if (formValue.name !== null && formValue.description !== null && formValue.capacities !==null && this.form === "2") {
-        console.log('capacidades: ')
-        const formData: CapacityRequest={
-          name: formValue.name,
-          description: formValue.description,
-          technologyIds: this.listAddService.idItemsAdd()
-        };
-        this.dataFormService.dataForm(formData);
-      } else {
-        this.bibliotecaForm.markAllAsTouched();
-      }
-
+  get bootcamps(){
+    return this.bibliotecaForm.get('bootcamps');
   }
+
+    create(): void {
+
+      if (this.bibliotecaForm.valid) {
+        const formValue = this.bibliotecaForm.value;
+        const formData: any = {
+            name: formValue.name ,
+            description: formValue.description
+          };
+          let specificFormData: any;
+
+          if (this.form === "1") {
+            specificFormData = { ...formData} as TechnologyRequest;
+          } else if (this.form === "2") {
+            specificFormData = { ...formData, technologyIds: this.listAddService.idItemsAdd() } as CapacityRequest;
+          } else if (this.form === "3") {
+            specificFormData = { ...formData, capacitiesIds: this.listAddService.idItemsAdd() } as BootcampRequest;
+          }
+
+
+          this.dataFormService.dataForm(specificFormData);
+        } else{
+          this.bibliotecaForm.markAllAsTouched();
+        }
+
+    }
 }
 
 
-}
+
