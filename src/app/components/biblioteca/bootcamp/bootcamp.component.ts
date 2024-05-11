@@ -16,12 +16,12 @@ export class BootcampComponent implements OnInit {
 
 
   bootcamps: Bootcamp[] = [];
-  capacityError: string = "";
+  bootcampError: string = "";
   formularioVisible: boolean = false;
   ventanaFormVisible: boolean = false;
   ventanaExitosoFormVisible: boolean = false;
   capacities: Capacity[] = [];
-  p: number = 1;
+  page: number = 1;
 
   itemsPage: number = 10;
   currentOrder: string = 'asc';
@@ -29,7 +29,7 @@ export class BootcampComponent implements OnInit {
   constructor(private bootcampService: BootcampService, private dataFormService: DataFormService, private capacityService: CapacityService,private lisAddService: ListAddService) { }
 
   ngOnInit(): void {
-
+    this.loadCapacities(this.currentOrder);
     this.capacityService.getAllCapacity(this.currentOrder).subscribe(
       (capacities: Capacity[]) => {
         this.capacities = capacities;
@@ -65,8 +65,20 @@ export class BootcampComponent implements OnInit {
     this.ventanaExitosoFormVisible = false;
   }
 
+  loadCapacities(order: string) {
+    this.currentOrder = order;
+    this.bootcampService.getAllBootcamp(this.currentOrder).subscribe(
+      (bootcamp: Bootcamp[]) => {
+        this.bootcamps = bootcamp;
+
+      },
+      (error) => {
+        console.error('Error al obtener las tecnologías:', error);
+      }
+    );
+  }
   pageChanged(event: any): void {
-    this.p = event;
+    this.page = event;
   }
 
   create(formData: BootcampRequest): void {
@@ -77,7 +89,7 @@ export class BootcampComponent implements OnInit {
       },
       error: (errorData) => {
         console.log(errorData)
-        this.capacityError = errorData;
+        this.bootcampError = errorData;
       },
       complete: () => {
         console.info("complete")
