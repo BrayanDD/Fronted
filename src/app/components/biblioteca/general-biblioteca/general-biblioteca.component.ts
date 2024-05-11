@@ -1,15 +1,12 @@
+
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { TechnologyService } from "../../services/technology/technology.service";
-import { TechnologyRequest } from "../../services/technology/technologyRequest";
-import { DataFormService } from 'src/app/services/formData.service';
-import { Technology } from 'src/app/services/technology/technology';
 
 @Component({
-  selector: 'app-biblioteca',
-  templateUrl: './biblioteca.component.html',
-  styleUrls: ['./biblioteca.component.scss']
+  selector: 'app-general-biblioteca',
+  templateUrl: './general-biblioteca.component.html',
+  styleUrls: ['./general-biblioteca.component.scss']
 })
-export class BibliotecaComponent implements OnInit {
+export class GeneralBibliotecaComponent implements OnInit {
 
   @Input() itemError: string = "";
   @Input() formularioVisible: boolean = false;
@@ -18,6 +15,7 @@ export class BibliotecaComponent implements OnInit {
   @Input() items: any[] = [];
   @Input() itemCreated: string = '';
   @Input() formItem: string = '';
+  @Input() itemsForSelect: any[] = [];
   page: number = 1;
 
   itemsPage: number = 10;

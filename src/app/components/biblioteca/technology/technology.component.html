@@ -1,11 +1,10 @@
 <app-general-biblioteca
-  [items]="bootcamps"
-  [itemError]="bootcampError"
-  (orderChange)="loadBootcamps($event)"
-  itemCreated="Bootcamp creado"
+  [items]="technologies"
+  [itemError]="technologyError"
+  (orderChange)="loadTechnologies($event)"
+  itemCreated="Tecnolgía creada"
   [formularioVisible]="formularioVisible"
   [ventanaFormVisible]="ventanaFormVisible"
   [ventanaExitosoFormVisible]="ventanaExitosoFormVisible"
-  [itemsForSelect]="capacities"
-  formItem="3"
+  formItem="1"
 ></app-general-biblioteca>

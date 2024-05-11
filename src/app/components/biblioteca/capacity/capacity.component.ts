@@ -39,16 +39,15 @@ export class CapacityComponent implements OnInit {
       }
     );
     this.dataFormService.formData$.subscribe(formData =>{
-      if(formData){
+      if(this.isCapacityRequest(formData)){
         this.create(formData);
       }
     })
   }
 
-  onItemsPerPageChange(event: number): void {
-    this.itemsPage = event;
+  private isCapacityRequest(obj: any): obj is CapacityRequest {
+    return obj && typeof obj === 'object' && 'name' in obj && 'description' in obj && 'technologyIds' in obj;
   }
-
 
   loadCapacities(order: string) {
     this.currentOrder = order;
@@ -61,22 +60,6 @@ export class CapacityComponent implements OnInit {
         console.error('Error al obtener las tecnologías:', error);
       }
     );
-  }
-
-  hideFormOnButtonClick(button: string): void {
-    if (button === 'button') {
-      this.ventanaFormVisible = true;
-      this.formularioVisible = true;
-    }
-  }
-
-  hideFormOnVentanaClose(): void {
-    this.ventanaFormVisible = false;
-    this.ventanaExitosoFormVisible = false;
-  }
-
-  pageChanged(event: any): void {
-    this.p = event;
   }
 
   create(formData: CapacityRequest): void {

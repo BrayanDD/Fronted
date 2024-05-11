@@ -21,15 +21,13 @@ export class BootcampComponent implements OnInit {
   ventanaFormVisible: boolean = false;
   ventanaExitosoFormVisible: boolean = false;
   capacities: Capacity[] = [];
-  page: number = 1;
 
-  itemsPage: number = 10;
   currentOrder: string = 'asc';
 
   constructor(private bootcampService: BootcampService, private dataFormService: DataFormService, private capacityService: CapacityService,private lisAddService: ListAddService) { }
 
   ngOnInit(): void {
-    this.loadCapacities(this.currentOrder);
+    this.loadBootcamps(this.currentOrder);
     this.capacityService.getAllCapacity(this.currentOrder).subscribe(
       (capacities: Capacity[]) => {
         this.capacities = capacities;
@@ -40,32 +38,23 @@ export class BootcampComponent implements OnInit {
       }
     );
     this.dataFormService.formData$.subscribe(formData =>{
-      if(formData){
+      if(this.isBootcampRequest(formData)){
         this.create(formData);
+      }else {
+        // Si no es una instancia de TechnologyRequest, puedes manejarlo según tus necesidades
+        console.log('El formData no es un TechnologyRequest');
+        console.log(formData);
       }
     })
 
   }
 
-  onItemsPerPageChange(event: number): void {
-    this.itemsPage = event;
+  private isBootcampRequest(obj: any): obj is BootcampRequest {
+    return obj && typeof obj === 'object' && 'name' in obj && 'description' in obj && 'capacitiesIds' in obj;
   }
 
 
-
-  hideFormOnButtonClick(button: string): void {
-    if (button === 'button') {
-      this.ventanaFormVisible = true;
-      this.formularioVisible = true;
-    }
-  }
-
-  hideFormOnVentanaClose(): void {
-    this.ventanaFormVisible = false;
-    this.ventanaExitosoFormVisible = false;
-  }
-
-  loadCapacities(order: string) {
+  loadBootcamps(order: string) {
     this.currentOrder = order;
     this.bootcampService.getAllBootcamp(this.currentOrder).subscribe(
       (bootcamp: Bootcamp[]) => {
@@ -76,9 +65,6 @@ export class BootcampComponent implements OnInit {
         console.error('Error al obtener las tecnologías:', error);
       }
     );
-  }
-  pageChanged(event: any): void {
-    this.page = event;
   }
 
   create(formData: BootcampRequest): void {
@@ -96,7 +82,7 @@ export class BootcampComponent implements OnInit {
         this.formularioVisible = false;
         this.ventanaFormVisible = false;
         this.ventanaExitosoFormVisible = true;
-
+        this.loadBootcamps(this.currentOrder);
         this.dataFormService.clearForm;
       }
     });

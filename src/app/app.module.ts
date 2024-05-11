@@ -29,6 +29,8 @@ import { AlertComponent } from './components/atoms/alert/alert.component';
 import { SelectAddComponent } from './components/molecules/select-add/select-add.component';
 import { CapacityComponent } from './components/biblioteca/capacity/capacity.component';
 import { BootcampComponent } from './components/biblioteca/bootcamp/bootcamp.component';
+import { TechnologyComponent } from './components/biblioteca/technology/technology.component';
+import { GeneralBibliotecaComponent } from './components/biblioteca/general-biblioteca/general-biblioteca.component';
 
 
 
@@ -56,6 +58,8 @@ import { BootcampComponent } from './components/biblioteca/bootcamp/bootcamp.com
     SelectAddComponent,
     CapacityComponent,
     BootcampComponent,
+    TechnologyComponent,
+    GeneralBibliotecaComponent,
 
 
   ],
