@@ -2,13 +2,22 @@
 <app-general-page>
   <app-nav-biblioteca></app-nav-biblioteca>
   <div *ngIf="bootcamps.length < 0"> Crear Capacidades</div>
-
-  <app-alert *ngIf="capacityError" class="error" message="{{capacityError}}"></app-alert>
+  <app-slider (itemsPerPageChange)="onItemsPerPageChange($event)" (order)="loadCapacities($event)"></app-slider>
+  <div class="container-data">
+    <div class="content" *ngFor="let bootcamp of bootcamps | paginate: { itemsPerPage: itemsPage, currentPage: page }">
+        <h2>{{bootcamp.name}}</h2>
+        <p>{{bootcamp.description}}</p>
+    </div>
+  </div>
+  <app-alert *ngIf="bootcampError" class="error" message="{{bootcampError}}"></app-alert>
   <app-created-emergente titleEmergente="Crear Capacidad" (closed)="hideFormOnVentanaClose()" *ngIf="ventanaFormVisible">
     <app-form [form]="'3'" [items]="capacities"></app-form>
   </app-created-emergente>
   <app-buttons textBut="+ Crear" id="button-created" (buttonClicked)="hideFormOnButtonClick($event)"></app-buttons>
+  <div class="controls" *ngIf="bootcamps.length > 0">
+    <pagination-controls  (pageChange)="pageChanged($event)" previousLabel="Prev" nextLabel="Next" [responsive]="true" class="pagination-spreads"></pagination-controls>
 
+  </div>
   <app-created-emergente id="created-succes" (closed)="hideFormOnVentanaClose()" class="succes" *ngIf="ventanaExitosoFormVisible">
     <img src="../utils/check-mark-2180770_1280.svg" alt="">
     <p>Tecnologia creada</p>
