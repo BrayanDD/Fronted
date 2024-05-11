@@ -2,7 +2,7 @@
   <app-nav-biblioteca></app-nav-biblioteca>
   <app-slider (itemsPerPageChange)="onItemsPerPageChange($event)" (order)="loadTechnologies($event)"></app-slider>
   <div class="container-data">
-    <div class="content" *ngFor="let technology of technologies | paginate: { itemsPerPage: itemsPage, currentPage: p }">
+    <div class="content" *ngFor="let technology of technologies | paginate: { itemsPerPage: itemsPage, currentPage: page }">
         <h2>{{technology.name}}</h2>
         <p>{{technology.description}}</p>
     </div>

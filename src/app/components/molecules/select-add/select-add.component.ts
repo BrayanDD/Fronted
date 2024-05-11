@@ -19,15 +19,7 @@ export class SelectAddComponent implements OnInit {
   constructor(private listAddService: ListAddService,private technologyService: TechnologyService) { }
 
   ngOnInit(): void {
-    this.technologyService.getAllTechnology(this.currentOrder).subscribe(
-      (technologies: Technology[]) => {
-        this.items = technologies;
 
-      },
-      (error) => {
-        console.error('Error al obtener las tecnologías:', error);
-      }
-    );
     this.listAddService.item.subscribe(any =>{
       this.itemsSelect = any;
     })

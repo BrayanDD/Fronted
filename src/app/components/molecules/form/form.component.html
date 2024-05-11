@@ -15,10 +15,17 @@
 
   </div>
   <app-select-add *ngIf="form === '2'" [control]="bibliotecaForm.controls['capacities']" [items]="items"></app-select-add>
-  <div *ngIf="capacitites?.invalid && (capacitites?.dirty || capacitites?.touched)" class="text-danger">
-    <div *ngIf="capacitites?.errors?.['required']">capacitites is required.</div>
-    <div *ngIf="capacitites?.errors?.['minLength']">capacitites must be at least 3 technologies long.</div>
-    <div *ngIf="capacitites?.errors?.['maxLength']">capacitites cannot exceed 20 technologies.</div>
+  <div *ngIf="capacities?.invalid && (capacities?.dirty || capacities?.touched)" class="text-danger">
+    <div *ngIf="capacities?.errors?.['required']">capacities is required.</div>
+    <div *ngIf="capacities?.errors?.['minLength']">capacities must be at least 3 technologies long.</div>
+    <div *ngIf="capacities?.errors?.['maxLength']">capacities cannot exceed 20 technologies.</div>
+
+  </div>
+  <app-select-add *ngIf="form === '3'" [control]="bibliotecaForm.controls['bootcamps']" [items]="items"></app-select-add>
+  <div *ngIf="bootcamps?.invalid && (bootcamps?.dirty || bootcamps?.touched)" class="text-danger">
+    <div *ngIf="bootcamps?.errors?.['required']">bootcamps is required.</div>
+    <div *ngIf="bootcamps?.errors?.['minLength']">bootcamps must be at least 3 technologies long.</div>
+    <div *ngIf="bootcamps?.errors?.['maxLength']">bootcamps cannot exceed 20 technologies.</div>
 
   </div>
   <app-buttons id="boton-crear" textBut="Crear" type="submit" [disabled]="!bibliotecaForm.valid || (bibliotecaForm.pristine && !bibliotecaForm.touched)" (click)="create()"></app-buttons>
