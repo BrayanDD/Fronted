@@ -22,7 +22,7 @@
     </table>
   </div>
   <app-created-emergente titleEmergente="Crear Version" (closed)="hideFormOnVentanaClose()" *ngIf="ventanaFormVisible">
-    <app-form [form]="'4'" ></app-form>
+    <app-form [form]="'4'" [idBootcapForVersion]="bootcampId" ></app-form>
   </app-created-emergente>
   <app-created-emergente id="created-succes" (closed)="hideFormOnVentanaClose()" class="succes" *ngIf="ventanaExitosoFormVisible">
     <img src="../utils/check-mark-2180770_1280.svg" alt="">

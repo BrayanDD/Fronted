@@ -7,7 +7,7 @@
 
   </div>
 
-  <app-tex-area labelText='Descripción'  [control]="bibliotecaForm.controls['description']"></app-tex-area>
+  <app-tex-area labelText='Descripción' *ngIf="form !== '4'" [control]="bibliotecaForm.controls['description']"></app-tex-area>
   <div *ngIf="description?.invalid && (description?.dirty || description?.touched)" class="text-danger">
     <div *ngIf="description?.errors?.['required']">description is required.</div>
     <div *ngIf="description?.errors?.['minLength']">description must be at least 5 characters long.</div>
@@ -27,6 +27,11 @@
     <div *ngIf="bootcamps?.errors?.['minLength']">bootcamps must be at least 3 technologies long.</div>
     <div *ngIf="bootcamps?.errors?.['maxLength']">bootcamps cannot exceed 20 technologies.</div>
 
+  </div>
+  <div *ngIf="form === '4'">
+    <app-input labelInput="Numero maximo de cupos" typeInput="number" [control]="bibliotecaForm.controls['maxCoup']"></app-input>
+    <app-input labelInput="Fecha de inicio" typeInput="date" [control]="bibliotecaForm.controls['dateStart']"></app-input>
+    <app-input labelInput="Fecha de finalización" typeInput="date" [control]="bibliotecaForm.controls['dateEnd']"></app-input>
   </div>
   <app-buttons id="boton-crear" textBut="Crear" type="submit" [disabled]="!bibliotecaForm.valid || (bibliotecaForm.pristine && !bibliotecaForm.touched)" (click)="create()"></app-buttons>
 
