@@ -1,0 +1,31 @@
+<app-general-page>
+  <app-nav-biblioteca></app-nav-biblioteca>
+  <div class="title"><h2>Titulo</h2> <app-buttons textBut="Crear versión" (buttonClicked)="showFormOnButtonClick($event)"></app-buttons> </div>
+
+  <div class="versions">
+    <div><h3>Crear una version</h3></div>
+    <table>
+      <tr>
+        <th>Version</th>
+        <th>Fecha lanzamiento</th>
+        <th>Cupo máximo</th>
+        <th>Tareas</th>
+        <th></th>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+  <app-created-emergente titleEmergente="Crear Version" (closed)="hideFormOnVentanaClose()" *ngIf="ventanaFormVisible">
+    <app-form [form]="'4'" ></app-form>
+  </app-created-emergente>
+  <app-created-emergente id="created-succes" (closed)="hideFormOnVentanaClose()" class="succes" *ngIf="ventanaExitosoFormVisible">
+    <img src="../utils/check-mark-2180770_1280.svg" alt="">
+    <p>Version Creada</p>
+  </app-created-emergente>
+</app-general-page>

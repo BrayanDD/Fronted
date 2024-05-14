@@ -1,2 +1,2 @@
 <button *ngIf="disabled" disabled (click)="onClick('button')" class="disabled">{{ textBut }}</button>
-<button *ngIf="!disabled" (click)="onClick('button')" class="button">{{ textBut }}</button>
+<button *ngIf="!disabled" (click)="onClick('button')" class="button" [routerLink]="['/'+url]">{{ textBut }}</button>

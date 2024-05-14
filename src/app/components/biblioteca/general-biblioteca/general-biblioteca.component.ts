@@ -16,6 +16,9 @@ export class GeneralBibliotecaComponent implements OnInit {
   @Input() itemCreated: string = '';
   @Input() formItem: string = '';
   @Input() itemsForSelect: any[] = [];
+  @Input() messageToCreate: string = '';
+  @Input() textButton: string = '';
+  @Input() urlButton: string = '';
   page: number = 1;
 
   itemsPage: number = 10;
@@ -38,11 +41,11 @@ export class GeneralBibliotecaComponent implements OnInit {
   }
 
 
-  hideFormOnButtonClick(button: string): void {
-    if (button === 'button') {
+  showFormOnButtonClick(): void {
+
       this.ventanaFormVisible = true;
       this.formularioVisible = true;
-    }
+
   }
 
   hideFormOnVentanaClose(): void {

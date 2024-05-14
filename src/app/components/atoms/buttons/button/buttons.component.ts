@@ -9,6 +9,7 @@ export class ButtonsComponent implements OnInit {
 
   @Input() textBut: string = '';
   @Input() disabled: boolean = false;
+  @Input() url: string = '';
   constructor() { }
 
   ngOnInit(): void {

@@ -31,6 +31,7 @@ import { CapacityComponent } from './components/biblioteca/capacity/capacity.com
 import { BootcampComponent } from './components/biblioteca/bootcamp/bootcamp.component';
 import { TechnologyComponent } from './components/biblioteca/technology/technology.component';
 import { GeneralBibliotecaComponent } from './components/biblioteca/general-biblioteca/general-biblioteca.component';
+import { VersionComponent } from './components/biblioteca/version/version.component';
 
 
 
@@ -60,6 +61,7 @@ import { GeneralBibliotecaComponent } from './components/biblioteca/general-bibl
     BootcampComponent,
     TechnologyComponent,
     GeneralBibliotecaComponent,
+    VersionComponent,
 
 
   ],

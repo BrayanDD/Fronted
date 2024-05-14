@@ -1,18 +1,22 @@
 <app-general-page>
   <app-nav-biblioteca></app-nav-biblioteca>
-  <app-slider (itemsPerPageChange)="onItemsPerPageChange($event)" (order)="loadItems($event)"></app-slider>
-  <div class="container-data">
+  <div class="message" *ngIf="items.length === 0">
+    <h3>{{messageToCreate}}</h3>
+  </div>
+  <app-slider *ngIf="items.length > 0" (itemsPerPageChange)="onItemsPerPageChange($event)" (order)="loadItems($event)"></app-slider>
+  <div class="container-data" *ngIf="items.length > 0">
     <div class="content" *ngFor="let item of items | paginate: { itemsPerPage: itemsPage, currentPage: page }">
         <h2>{{item.name}}</h2>
         <p>{{item.description}}</p>
+        <app-buttons [textBut]="textButton" [url]="urlButton + '/' + item.id"></app-buttons>
     </div>
   </div>
   <app-alert *ngIf="itemError" class="error" message="{{itemError}}"></app-alert>
   <app-created-emergente titleEmergente="Crear Tecnolgía" (closed)="hideFormOnVentanaClose()" *ngIf="ventanaFormVisible">
     <app-form [form]="formItem" [items]="itemsForSelect"></app-form>
   </app-created-emergente>
-  <app-buttons textBut="+ Crear" id="button-created" (buttonClicked)="hideFormOnButtonClick($event)"></app-buttons>
-  <div class="controls">
+  <app-buttons textBut="+ Crear" id="button-created" (buttonClicked)="showFormOnButtonClick()"></app-buttons>
+  <div class="controls" *ngIf="items.length > 0">
     <pagination-controls  (pageChange)="pageChanged($event)" previousLabel="Prev" nextLabel="Next" [responsive]="true" class="pagination-spreads"></pagination-controls>
 
   </div>

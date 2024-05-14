@@ -10,6 +10,7 @@ import { SelectAddComponent } from './components/molecules/select-add/select-add
 import { CapacityComponent } from './components/biblioteca/capacity/capacity.component';
 import { BootcampComponent } from './components/biblioteca/bootcamp/bootcamp.component';
 import { TechnologyComponent } from './components/biblioteca/technology/technology.component';
+import { VersionComponent } from './components/biblioteca/version/version.component';
 
 
 const routes: Routes = [
@@ -21,14 +22,13 @@ const routes: Routes = [
       { path: '', redirectTo: 'technology', pathMatch: 'full' },
       { path: 'technology', component: TechnologyComponent },
       { path: 'capacity', component: CapacityComponent },
-      { path: 'bootcamp', component: BootcampComponent }
+      { path: 'bootcamp', component: BootcampComponent },
+
+      { path: 'version/:bootcampId', component: VersionComponent }
     ]
   },
-  { path: 'general', component: GeneralPageComponent },
-  { path: 'input', component: InputComponent },
-  { path: 'texarea', component: TexAreaComponent },
-  { path: 'form', component: FormComponent },
-  { path: 'select', component: SelectAddComponent }
+
+
 ];
 
 @NgModule({

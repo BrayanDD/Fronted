@@ -41,7 +41,7 @@ export class BootcampComponent implements OnInit {
       if(this.isBootcampRequest(formData)){
         this.create(formData);
       }else {
-        // Si no es una instancia de TechnologyRequest, puedes manejarlo según tus necesidades
+
         console.log('El formData no es un TechnologyRequest');
         console.log(formData);
       }
