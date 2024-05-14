@@ -30,3 +30,18 @@ export function capacitiesValidator(idItems: number[]): ValidatorFn {
     return null;
   };
 }
+
+export function endDateAfterStartDateValidator(startDateControlName: string): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const startDateControl = control.root.get(startDateControlName);
+    if (!startDateControl || !startDateControl.value || !control.value) {
+      return null;
+    }
+    const startDate = new Date(startDateControl.value);
+    const endDate = new Date(control.value);
+    if (endDate < startDate) {
+      return { endDateBeforeStartDate: true };
+    }
+    return null;
+  };
+}
