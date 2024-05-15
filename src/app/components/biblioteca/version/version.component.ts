@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataFormService } from 'src/app/services/formData.service';
+import { Version } from 'src/app/services/version/version';
 import { VersionService } from 'src/app/services/version/version.service';
 import { VersionRequest } from 'src/app/services/version/versionRequest';
 
@@ -14,15 +15,20 @@ export class VersionComponent implements OnInit {
   formularioVisible: boolean = false;
   ventanaFormVisible: boolean = false;
   ventanaExitosoFormVisible: boolean = false;
-  bootcampId: number | null = null;
+  bootcampName: string = '';
+  bootcampId: number  = 0;
   versions: any[] = [];
   versionError: string = '';
+  currentOrder: string = 'asc';
+
    constructor(private route: ActivatedRoute, private dataFormService: DataFormService, private versionService: VersionService) { }
 
    ngOnInit(): void {
      this.route.params.subscribe(params => {
        this.bootcampId = params['bootcampId'];
-       console.log('el parametro es: '+ this.bootcampId)
+       this.bootcampName = params['bootcampName'];
+       console.log('el parametro es: '+ this.bootcampId);
+       console.log('Bootcamp Name:', this.bootcampName);
      });
      this.dataFormService.formData$.subscribe(formData => {
       console.log('datos de la versión fuera del if', JSON.stringify(formData));
@@ -32,6 +38,7 @@ export class VersionComponent implements OnInit {
         this.create(formData);
       }
     });
+    this.loadVersions(this.currentOrder);
    }
 
 
@@ -57,6 +64,20 @@ export class VersionComponent implements OnInit {
     this.ventanaFormVisible = false;
     this.ventanaExitosoFormVisible = false;
   }
+
+  loadVersions(order: string) {
+    this.currentOrder = order;
+    this.versionService.getAllVersionIdBootcamp(this.currentOrder,this.bootcampId).subscribe(
+      (versions: Version[]) => {
+        this.versions = versions;
+
+      },
+      (error) => {
+        console.error('Error al obtener las tecnologías:', error);
+      }
+    );
+  }
+
   create(formData: VersionRequest): void {
     console.log('Datos del formulario:', formData);
     this.versionService.createVersion(formData as VersionRequest).subscribe({
@@ -72,6 +93,7 @@ export class VersionComponent implements OnInit {
         this.ventanaFormVisible = false;
         this.ventanaExitosoFormVisible = true;
         this.dataFormService.clearForm;
+        this.loadVersions(this.currentOrder);
       }
     });
   }

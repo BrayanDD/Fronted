@@ -8,7 +8,7 @@
     <div class="content" *ngFor="let item of items | paginate: { itemsPerPage: itemsPage, currentPage: page }">
         <h2>{{item.name}}</h2>
         <p>{{item.description}}</p>
-        <app-buttons [textBut]="textButton" [url]="urlButton + '/' + item.id"></app-buttons>
+        <app-buttons [textBut]="textButton" [url]="urlButton + '/' + item.id + '/' + item.name" ></app-buttons>
     </div>
   </div>
   <app-alert *ngIf="itemError" class="error" message="{{itemError}}"></app-alert>

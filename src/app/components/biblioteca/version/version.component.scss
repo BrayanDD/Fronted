@@ -1,0 +1,30 @@
+@import "~src/styles/variables";
+.title {
+  display: flex;
+  align-items: center;
+  padding-left: 0.5em;
+  height: 12%;
+  margin: 1em 0em  ;
+  border-bottom: 0.1em $primary-color solid;
+}
+
+.title h2 {
+  margin-right: 0.3em;
+}
+
+table {
+  margin-top: 0.8em;
+  max-height: 73%;
+  overflow-y: scroll;
+  width: 90%;
+  margin: 0 5%;
+}
+
+table td {
+  text-align: center;
+}
+
+table th {
+  text-align: center;
+}
+
