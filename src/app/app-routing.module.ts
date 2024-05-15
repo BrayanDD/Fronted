@@ -24,7 +24,8 @@ const routes: Routes = [
       { path: 'capacity', component: CapacityComponent },
       { path: 'bootcamp', component: BootcampComponent },
 
-      { path: 'version/:bootcampId', component: VersionComponent }
+      { path: 'version/:bootcampId/:bootcampName', component: VersionComponent }
+
     ]
   },
 

@@ -1,10 +1,13 @@
 <app-general-page>
   <app-nav-biblioteca></app-nav-biblioteca>
-  <div class="title"><h2>Titulo</h2> <app-buttons textBut="Crear versión" (buttonClicked)="showFormOnButtonClick($event)"></app-buttons> </div>
+  <div class="title">
+    <h2>{{bootcampName}}</h2>
+    <app-buttons textBut="Crear versión" (buttonClicked)="showFormOnButtonClick($event)"></app-buttons>
+  </div>
 
   <div class="versions">
-    <div><h3>Crear una version</h3></div>
-    <table>
+    <div *ngIf="versions.length === 0"><h3>Crear una version</h3></div>
+    <table *ngIf="versions.length > 0">
       <tr>
         <th>Version</th>
         <th>Fecha lanzamiento</th>
@@ -12,12 +15,12 @@
         <th>Tareas</th>
         <th></th>
       </tr>
-      <tr>
+      <tr *ngFor="let version of versions">
+        <td>{{ version.version }}</td>
+        <td>{{ version.startDate | date }}</td>
+        <td>{{ version.maxCapacity }}</td>
         <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><app-buttons [textBut]="'Ver'"></app-buttons></td>
       </tr>
     </table>
   </div>
