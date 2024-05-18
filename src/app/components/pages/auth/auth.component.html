@@ -1,0 +1,51 @@
+<div>
+  <form *ngIf="!formLogin" [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()">
+    <app-input typeInput="text" labelInput="Nombre" [control]="registerForm.controls.name"></app-input>
+    <div *ngIf="registerForm.controls.name?.invalid && (registerForm.controls.name?.dirty || registerForm.controls.name?.touched)" class="text-danger">
+      <div *ngIf="registerForm.controls.name?.errors?.['required']">name is required.</div>
+    </div>
+
+    <app-input typeInput="text" labelInput="Apellido" [control]="registerForm.controls.lastName"></app-input>
+    <div *ngIf="registerForm.controls.lastName?.invalid && (registerForm.controls.lastName?.dirty || registerForm.controls.lastName?.touched)" class="text-danger">
+      <div *ngIf="registerForm.controls.lastName?.errors?.['required']">lastName is required.</div>
+    </div>
+
+    <app-input typeInput="number" labelInput="Documento Identidad" [control]="registerForm.controls.docIdent"></app-input>
+    <div *ngIf="registerForm.controls.docIdent?.invalid && (registerForm.controls.docIdent?.dirty || registerForm.controls.docIdent?.touched)" class="text-danger">
+      <div *ngIf="registerForm.controls.docIdent?.errors?.['required']">docIdent is required.</div>
+    </div>
+
+    <app-input typeInput="number" labelInput="Celular" [control]="registerForm.controls.cellPhone"></app-input>
+    <div *ngIf="registerForm.controls.cellPhone?.invalid && (registerForm.controls.cellPhone?.dirty || registerForm.controls.cellPhone?.touched)" class="text-danger">
+      <div *ngIf="registerForm.controls.cellPhone?.errors?.['required']">cellPhone is required.</div>
+    </div>
+
+    <app-input typeInput="email" labelInput="Correo" [control]="registerForm.controls.email"></app-input>
+    <div *ngIf="registerForm.controls.email?.invalid && (registerForm.controls.email?.dirty || registerForm.controls.email?.touched)" class="text-danger">
+      <div *ngIf="registerForm.controls.email?.errors?.['required']">email is required.</div>
+    </div>
+
+    <app-input typeInput="password" labelInput="Clave" [control]="registerForm.controls.password"></app-input>
+    <div *ngIf="registerForm.controls.password?.invalid && (registerForm.controls.password?.dirty || registerForm.controls.password?.touched)" class="text-danger">
+      <div *ngIf="registerForm.controls.password?.errors?.['required']">password is required.</div>
+    </div>
+
+    <app-buttons textBut="Crear" type="submit"></app-buttons>
+  </form>
+</div>
+
+<div *ngIf="formLogin">
+  <form (ngSubmit)="onLoginSubmit()" [formGroup]="loginForm">
+    <app-input typeInput="email" labelInput="Correo" [control]="loginForm.controls.email"></app-input>
+    <div *ngIf="loginForm.controls.email?.invalid && (loginForm.controls.email?.dirty || loginForm.controls.email?.touched)" class="text-danger">
+      <div *ngIf="loginForm.controls.email?.errors?.['required']">email is required.</div>
+    </div>
+
+    <app-input typeInput="password" labelInput="Clave" [control]="loginForm.controls.password"></app-input>
+    <div *ngIf="loginForm.controls.password?.invalid && (loginForm.controls.password?.dirty || loginForm.controls.password?.touched)" class="text-danger">
+      <div *ngIf="loginForm.controls.password?.errors?.['required']">password is required.</div>
+    </div>
+
+    <app-buttons textBut="Crear" type="submit"></app-buttons>
+  </form>
+</div>
