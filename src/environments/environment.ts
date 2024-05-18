@@ -4,10 +4,16 @@
 
 export const environment = {
   production: false,
-  urlHost: 'http://localhost:8092/',
-  urlApi:  'http://localhost:8092/api/v1/onclass/',
+  urlHost: 'http://localhost:8090/',
+  urlApi: 'http://localhost:8090/user/',
   userId:1
 };
+// export const environmentMicroUser = {
+//   production: false,
+//   urlHost: 'http://localhost:8090/',
+//   urlApi: 'http://localhost:8090/user/',
+//   userId:2
+// };
 
 /*
  * For easier debugging in development mode, you can import the following file

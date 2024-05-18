@@ -32,6 +32,12 @@ import { BootcampComponent } from './components/biblioteca/bootcamp/bootcamp.com
 import { TechnologyComponent } from './components/biblioteca/technology/technology.component';
 import { GeneralBibliotecaComponent } from './components/biblioteca/general-biblioteca/general-biblioteca.component';
 import { VersionComponent } from './components/biblioteca/version/version.component';
+import { AuthComponent } from './components/pages/auth/auth.component';
+import { RegisterUserComponent } from './components/auth/register-admin/register-user/register-user.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { RegisterAdminComponent } from './components/auth/register-admin/register-admin.component';
+
+
 
 
 
@@ -62,6 +68,11 @@ import { VersionComponent } from './components/biblioteca/version/version.compon
     TechnologyComponent,
     GeneralBibliotecaComponent,
     VersionComponent,
+    AuthComponent,
+    RegisterUserComponent,
+    LoginComponent,
+    RegisterAdminComponent,
+
 
 
   ],
