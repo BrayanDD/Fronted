@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  urlHost: 'http://localhost:8090/',
-  urlApi: 'http://localhost:8090/user/',
-  userId:1
+  urlHost: 'http://localhost:8092/',
+  urlApi: 'http://localhost:8092/api/v1/onclass',
+
 };
 // export const environmentMicroUser = {
 //   production: false,
